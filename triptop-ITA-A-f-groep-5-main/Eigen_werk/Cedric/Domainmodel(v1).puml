@@ -1,0 +1,85 @@
+@startuml
+
+class Reiziger {
+  naam
+  email
+  telefoon
+}
+
+class Medewerker {
+  medewerkerId
+  naam
+  email
+}
+
+class Reisaanvraag {
+  id
+  wensen
+  budget
+  datumIngediend
+}
+
+class Reisvoorstel {
+  id
+  status
+  prijsIndicatie
+}
+
+class Reis {
+  id
+  beginDatum
+  eindDatum
+  totaalPrijs
+  status
+}
+
+class Reisdag {
+  dagNummer
+  datum
+}
+
+abstract class Bouwsteen {
+  naam
+  beschrijving
+  prijs
+}
+
+class Vervoer
+class Verblijf
+class Activiteit
+
+class Wijziging {
+  datum
+  beschrijving
+}
+
+class Boeking {
+  boekingsNummer
+  datum
+  status
+}
+
+class Reisdocument {
+  gegenereerdOp
+}
+
+Reiziger "1" -- "0..*" Reisaanvraag : dient in
+Reisaanvraag "1" -- "1" Reisvoorstel : leidt tot
+Medewerker "1" -- "0..*" Reisvoorstel : maakt
+Reisvoorstel "1" -- "1" Reis : wordt
+Reiziger "1" -- "0..*" Reis : bevestigt
+
+Medewerker "1" -- "0..*" Reis : beheert
+
+Reis "1" -- "1..*" Reisdag : bestaat uit
+Reisdag "1" -- "0..*" Bouwsteen : bevat
+
+Bouwsteen <|-- Vervoer
+Bouwsteen <|-- Verblijf
+Bouwsteen <|-- Activiteit
+
+Reis "1" -- "0..*" Wijziging
+Reis "1" -- "1" Boeking
+Boeking "1" -- "1" Reisdocument : genereert
+
+@enduml

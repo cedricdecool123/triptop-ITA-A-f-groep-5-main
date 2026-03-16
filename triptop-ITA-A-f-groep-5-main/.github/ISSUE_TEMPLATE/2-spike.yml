@@ -1,0 +1,26 @@
+name: Spike
+description: Een onderzoek met timebox
+title: "📍 "
+type: Spike
+body:
+  - type: textarea
+    id: onderzoeksdoel
+    attributes:
+      label: Onderzoeksvraag, of -doel
+      description: Beschrijf zo duidelijk mogelijk de onderzoeksvraag, of het -doel
+      placeholder: Beschrijving
+    validations:
+      required: false
+  - type: dropdown
+    id: onzekerheid
+    attributes:
+      label: Welk type onzekerheid
+      multiple: false
+      default: 0
+      options:
+        - Functionele onzekerheid
+        - Technische onzekerheid
+        - Kennis onzekerheid
+    validations:
+      required: true
+

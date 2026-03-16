@@ -1,0 +1,14 @@
+name: Documentatie
+description: Uitbreiding op documentatie
+title: "✒️ "
+type: Documentatie
+body:
+  - type: textarea
+    id: beschrijving
+    attributes:
+      label: Toelichting 
+      placeholder: Beschrijving
+    validations:
+      required: false
+
+

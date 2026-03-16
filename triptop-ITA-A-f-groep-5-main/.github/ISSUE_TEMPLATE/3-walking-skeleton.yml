@@ -1,0 +1,14 @@
+name: Walking Skeleton
+description: Uitbreiding op walking skeleton
+title: "💀 "
+type: Walking Skeleton
+body:
+  - type: textarea
+    id: beschrijving
+    attributes:
+      label: Toelichting 
+      placeholder: Beschrijving
+    validations:
+      required: false
+
+

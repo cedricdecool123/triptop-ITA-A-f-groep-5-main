@@ -1,0 +1,26 @@
+name: Taak
+description: (Sub-issue) Een onderdeel van een van de andere types
+title: "📋 "
+type: Taak
+body:
+  - type: textarea
+    id: taakbeschrijving
+    attributes:
+      label: Toelichting op de taak
+      placeholder: Beschrijving
+    validations: 
+      required: false
+  - type: dropdown
+    id: taaksoort
+    attributes:
+      label: Welk soort taak
+      multiple: true
+      options:
+        - Verkennen
+        - Ordenen
+        - Uitwerken
+        - Evalueren
+        - Integreren
+        - Documenteren
+    validations: 
+      required: true
