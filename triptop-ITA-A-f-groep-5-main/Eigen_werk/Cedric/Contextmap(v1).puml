@@ -1,15 +1,29 @@
 @startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(reiziger, "Reiziger", "Persoon die wilt reizen")
-Person(medewerker, "Medewerker", "Helpt bij samenstellen en boeken van reis")
+Person(reiziger, "Reiziger", "Stelt reizen samen")
+Person(medewerker, "Medewerker", "Beheert reizen en boekingen")
 
-System(triptop, "TripTop", "Applicatie")
+System_Boundary(triptop, "TripTop") {
 
-System_Ext(intern, "Intern Systeem", "Verwerkt boekingen")
+    Container(frontend, "Web App", "JavaScript (HTML/CSS)", "UI waar gebruikers reizen samenstellen en beheren")
 
-Rel(reiziger, triptop, "Maakt reisaanvraag, bekijkt voorstellen")
-Rel(medewerker, triptop, "Beheert reizen en maakt boekingen")
-Rel(triptop, intern, "Stuurt boekingsgegevens")
+    Container(backend, "Backend API", "Java / Node / Spring", "Verwerkt logica, reizen en boekingen")
+
+    ContainerDb(database, "Database", "Relational DB", "Slaat reizen en gebruikers op")
+}
+
+System_Ext(leaflet, "Map Component", "Leaflet.js")
+
+System_Ext(intern, "Intern Systeem", "Verwerkt boekingen extern")
+
+Rel(reiziger, frontend, "Gebruikt", "Browser")
+Rel(medewerker, frontend, "Gebruikt", "Browser")
+
+Rel(frontend, leaflet, "Gebruikt", "JS integratie")
+Rel(frontend, backend, "API calls", "JSON/HTTP")
+
+Rel(backend, database, "Leest/schrijft", "SQL")
+Rel(backend, intern, "Stuurt boekingen", "API")
 
 @enduml
