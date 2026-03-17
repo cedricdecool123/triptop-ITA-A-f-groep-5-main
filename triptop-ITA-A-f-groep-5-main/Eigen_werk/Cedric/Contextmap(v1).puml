@@ -1,0 +1,15 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(reiziger, "Reiziger", "Persoon die wilt reizen")
+Person(medewerker, "Medewerker", "Helpt bij samenstellen en boeken van reis")
+
+System(triptop, "TripTop", "Applicatie")
+
+System_Ext(intern, "Intern Systeem", "Verwerkt boekingen")
+
+Rel(reiziger, triptop, "Maakt reisaanvraag, bekijkt voorstellen")
+Rel(medewerker, triptop, "Beheert reizen en maakt boekingen")
+Rel(triptop, intern, "Stuurt boekingsgegevens")
+
+@enduml
